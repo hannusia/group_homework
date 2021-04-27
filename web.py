@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from read import CleanText
+
 app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
@@ -8,8 +8,8 @@ def index():
 
 @app.route('/hello', methods=['POST'])
 def hello():
-    text = CleanText(request.form['input_text'])
-    return text.clean()
+    text = request.form['input_text']
+    return text
 
 if __name__ == '__main__':
     app.run()
