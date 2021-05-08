@@ -1,0 +1,33 @@
+<style>
+  .button {
+    background-color: #4caf99;
+    border: none;
+    color: rgb(255, 251, 240);
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  </style>
+{% extends 'base.html' %}
+
+{% block heading %}
+<p class="title has-text-centered">
+  Введіть текст для аналізу настрою:
+</p>
+{% endblock %}
+{% block main %}
+<p class="title has-text-centered">
+  <form method='POST', action='/hello'>
+    <div class='form-group'>
+    <label for="input_text"></label>
+    <textarea id="input_text" name="input_text" rows="15" cols="90" placeholder="Введіть текст..."></textarea><br>
+    <p><input type="submit" class=button value="Submit"/></p>
+    <br>
+    </form>
+  </div>
+</p>
+{% endblock %}
