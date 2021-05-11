@@ -1,5 +1,8 @@
 class Divider:
-    def __init__(self):
+    """
+    Helper class which can divide text into sentences and sentence into words.
+    """
+    def __init__(self) -> None:
         pass
 
     def div_into_sentences(self, text):
@@ -12,7 +15,10 @@ class Divider:
             sentences.add(Sentence(sentence))
         return sentences.reverse()
 
-    def div_into_words(self, sentence):
+    def div_into_words(self, sentence) -> list:
+        """
+        return list with all words from given sentence
+        """
         import re
         sentence = re.sub('[^а-яі ]', '', sentence)
         words = sentence.split(' ')
@@ -20,20 +26,35 @@ class Divider:
 
 
 class Node:
-    def __init__(self, data, next=None):
+    """
+    Helper class - node for TextADT.
+    """
+    def __init__(self, data, next=None) -> None:
         self.data = data
         self.next = next
 
+    def __str__(self) -> str:
+        return str(self.data.text)
+
 
 class TextADT:
-    def __init__(self):
+    """
+    Linked list to keep text.
+    """
+    def __init__(self) -> None:
         self.head = None
         self.emotion = 0
 
-    def empty(self):
+    def empty(self) -> bool:
+        """
+        Check if linked list is empty.
+        """
         return self.head == None
 
-    def add(self, value):
+    def add(self, value) -> None:
+        """
+        Add new value to linked list.
+        """
         if self.head is None:
             self.head = Node(value)
         else:
@@ -41,7 +62,10 @@ class TextADT:
             self.head = Node(value)
             self.head.next = rest
 
-    def __repr__(self):
+    def __repr__(self) -> str:
+        """
+        Return sring representation of TextADT.
+        """
         node = self.head
         nodes = []
         while node is not None:
@@ -57,6 +81,12 @@ class TextADT:
             ms.add(current.data)
             current = current.next
         return ms
+
+    def __iter__(self):
+        list_item = self.head
+        while list_item is not None:
+            yield list_item
+            list_item = list_item.next
 
 
 class Sentence:
@@ -75,9 +105,13 @@ class Sentence:
             text = text[1:]
         self.text = text.lower()
         self.emotion = 0
-        self.words = []
+        self.words = self.clean_words()
 
     def clean_words(self) -> list:
+        """
+        Return list with normalized words from sentence
+        and without stopwords.
+        """
         import pymorphy2
         morph = pymorphy2.MorphAnalyzer(lang='uk')
         all_words = Divider().div_into_words(self.text)
@@ -89,12 +123,22 @@ class Sentence:
             if all_words[i] == 'не':
                 if all_words[i+1] in self.EMOTIONAL_WORDS:
                     tpl = self.EMOTIONAL_WORDS[all_words[i+1]]
-                    words.append(Word(all_words[i+1], tpl[0], tpl[1]).reverse())
+                    words.append(
+                        Word(all_words[i+1], tpl[0], tpl[1]).reverse())
             else:
                 if all_words[i] in self.EMOTIONAL_WORDS:
                     tpl = self.EMOTIONAL_WORDS[all_words[i]]
-                    words.append(Word(all_words[i], tpl[0], tpl[1]).reverse())
+                    words.append(Word(all_words[i], tpl[0], tpl[1]))
         return words
+
+    def __str__(self):
+        """
+        Return string representation of sentence.
+        """
+        result = ''
+        for word in self.words:
+            result += str(word) + '\n'
+        return result
 
     def count_emotion(self):
         pass
@@ -107,6 +151,9 @@ class Word:
         self.emotion = emotion
 
     def reverse(self):
+        """
+        Return word with opposite sentiment to given word.
+        """
         if self.emotion in {'s', 'a', 'f'}:
             reversed_emotion = 'h'
         else:
@@ -115,4 +162,7 @@ class Word:
         return reversed_word
 
     def __str__(self):
+        """
+        Return string representation of given word.
+        """
         return f'word {self.name} has value of {str(self.value)} and has {self.emotion} emotion'
