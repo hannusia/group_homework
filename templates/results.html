@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <style>
+        body {
+          background-color: rgb(6, 44, 61);
+        }
+        
+        h1 {
+          color: rgb(252, 251, 230);
+          text-align: center;
+          font-family: Cambria;
+          font-size: 35px;
+        }
+        
+        p {
+          color: rgb(252, 251, 230);
+          text-align: inherit;
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 13px;
+          margin-left: 50px;
+        }
+       
+        .parent {
+            display: grid;
+            place-items: center;
+            }
+
+        img {
+            border-radius: 50%;
+          }
+
+          * {
+          box-sizing: border-box;
+        }
+        
+        .column {
+          float: left;
+          width: 25.00%;
+          padding: 1px;
+        }
+        
+        .row::after {
+          content: "";
+          clear: both;
+          display: table;
+          /* position:fixed;
+          bottom:0px; */
+        }
+
+          </style>
+
+        </style></head>
+
+<body>
+<h1>Результат аналізу тексту</h1>
+
+{% block content %}
+    <p><img src="https://w7.pngwing.com/pngs/384/850/png-transparent-wow-emoji-like-button-emoticon-computer-icons-facebook-surprised-expression-smiley-snout-circle.png" height="200px" width="200px" style="vertical-align:right;margin:0px 50px;float: right">{{ post}}</p>
+    <!--  {% block title %} {{ post}} style="float: right" {% endblock %} -->
+    <!-- <p>{{ post['content'] }}</p> -->
+{% endblock %}
+</html>
+      
+        
+</body>
+<div class="row">
+  <div class="column">
+    <img src="https://w7.pngwing.com/pngs/384/850/png-transparent-wow-emoji-like-button-emoticon-computer-icons-facebook-surprised-expression-smiley-snout-circle.png" style="width: 100px;height: 100px">
+  </div>
+  <div class="column">
+    <img src="https://img1.pnghut.com/5/24/10/dZBJs3Vcss/smile-unicode-emoji-sticker-jesse-genet.jpg" style="width: 100px;height: 100px">
+  </div>
+  <div class="column">
+    <img src="https://www.pngjoy.com/pngs/776/9229179_waluigi-face-facebook-angry-emoji-png-hd-png.png" style="width: 100px;height: 100px">
+  </div>
+  <div class="column">
+    <img src="  https://cdn.imgbin.com/6/22/20/imgbin-facebook-emoticon-emoji-like-button-smiley-sad-emoji-crying-emoji-illustration-83W8aWrakeLy9isQqAmF3xGNj.jpg" style="width: 100px;height: 100px">
+  </div>
+</div>
+</html>
