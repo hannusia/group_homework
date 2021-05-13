@@ -9,7 +9,8 @@ def index():
 @app.route('/hello', methods=['POST'])
 def hello():
     text = request.form['input_text']
-    return text
+    return render_template('results.html', post=text)
+    # return text
 
 if __name__ == '__main__':
     app.run()
