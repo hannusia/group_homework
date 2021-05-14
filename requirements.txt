@@ -7,6 +7,7 @@ click==7.1.2
 cymem==2.0.5
 DAWG-Python==0.7.2
 docopt==0.6.2
+emoji==1.2.0
 idna==2.10
 Jinja2==2.11.3
 joblib==1.0.1
@@ -29,6 +30,7 @@ smart-open==3.0.0
 spacy==3.0.5
 spacy-legacy==3.0.2
 srsly==2.4.1
+text2emotion==0.0.5
 thinc==8.0.3
 toml==0.10.2
 tqdm==4.60.0
