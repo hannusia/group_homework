@@ -1,8 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  .btn {
+    background-color: rgb(15, 112, 136);
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
   
-    <style>
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: rgb(15, 112, 136);
+  }
         body {
           background-color: rgb(6, 44, 61);
         }
@@ -54,29 +69,15 @@
         </style></head>
 
 <body>
+  <a href="/">
+  <button class="btn"><i class="fa fa-home"></i>
+  </button>
+  </a>
+  
+</div>
 <h1>Результат аналізу тексту</h1>
 
 {% block content %}
     <p><img src="https://w7.pngwing.com/pngs/384/850/png-transparent-wow-emoji-like-button-emoticon-computer-icons-facebook-surprised-expression-smiley-snout-circle.png" height="200px" width="200px" style="vertical-align:right;margin:0px 50px;float: right">{{ post}}</p>
-    <!--  {% block title %} {{ post}} style="float: right" {% endblock %} -->
-    <!-- <p>{{ post['content'] }}</p> -->
 {% endblock %}
-</html>
-      
-        
-</body>
-<div class="row">
-  <div class="column">
-    <img src="https://w7.pngwing.com/pngs/384/850/png-transparent-wow-emoji-like-button-emoticon-computer-icons-facebook-surprised-expression-smiley-snout-circle.png" style="width: 100px;height: 100px">
-  </div>
-  <div class="column">
-    <img src="https://img1.pnghut.com/5/24/10/dZBJs3Vcss/smile-unicode-emoji-sticker-jesse-genet.jpg" style="width: 100px;height: 100px">
-  </div>
-  <div class="column">
-    <img src="https://www.pngjoy.com/pngs/776/9229179_waluigi-face-facebook-angry-emoji-png-hd-png.png" style="width: 100px;height: 100px">
-  </div>
-  <div class="column">
-    <img src="  https://cdn.imgbin.com/6/22/20/imgbin-facebook-emoticon-emoji-like-button-smiley-sad-emoji-crying-emoji-illustration-83W8aWrakeLy9isQqAmF3xGNj.jpg" style="width: 100px;height: 100px">
-  </div>
-</div>
 </html>

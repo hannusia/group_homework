@@ -6,8 +6,8 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/hello', methods=['POST'])
-def hello():
+@app.route('/results', methods=['POST'])
+def results():
     text = request.form['input_text']
     return render_template('results.html', post=text)
     # return text
