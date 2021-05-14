@@ -1,3 +1,8 @@
+from read_files import *
+emotional_words = read_emotions('positive.txt')
+stopwords = read_stopwords('stopwords.txt')
+
+
 class Divider:
     """
     Helper class which can divide text into sentences and sentence into words.
@@ -121,7 +126,6 @@ class TextADT:
 
     def make_dict(self):
         curr = self.head
-        curr.data.make_dict()
         self.happy_words = curr.data.happy_words
         self.sad_words = curr.data.sad_words
         self.agressive_words = curr.data.agressive_words
@@ -136,8 +140,8 @@ class TextADT:
 
 
 class Sentence:
-    STOPWORDS = {}
-    EMOTIONAL_WORDS = {'щасливий': (2.0, 'h')}
+    STOPWORDS = stopwords
+    EMOTIONAL_WORDS = emotional_words
     FORBIDDEN_WORDS = {}
 
     def __init__(self, text: str, lang: str):
@@ -151,6 +155,7 @@ class Sentence:
         self.sad_words = {}
         self.agressive_words = {}
         self.fear_words = {}
+        self.make_dict()
 
     def find_sentiment(self, text):
         if text[-1] == '!':
@@ -233,7 +238,7 @@ class Sentence:
     def make_dict(self):
         for word in self.words:
             emotion = word.emotion
-            name= word.name
+            name = word.name
             if emotion == 'h':
                 if name in self.happy_words:
                     self.happy_words[name] += 1
@@ -254,6 +259,7 @@ class Sentence:
                     self.fear_words[name] += 1
                 else:
                     self.fear_words[name] = 1
+
 
 class Word:
     def __init__(self, name: str, value: float, emotion: str) -> None:
