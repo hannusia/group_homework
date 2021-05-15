@@ -1,6 +1,6 @@
 from read_files import *
-emotional_words = read_emotions('positive.tsv')
-stopwords = read_stopwords('stopwords.txt')
+emotional_words = read_emotions('D:\semestr_2\labs\homework\work\modules\positive.tsv')
+# stopwords = read_stopwords('stopwords.txt')
 
 
 class Divider:
@@ -140,7 +140,7 @@ class TextADT:
 
 
 class Sentence:
-    STOPWORDS = stopwords
+    # STOPWORDS = stopwords
     EMOTIONAL_WORDS = emotional_words
     FORBIDDEN_WORDS = {}
 
@@ -178,8 +178,8 @@ class Sentence:
             morph = pymorphy2.MorphAnalyzer(lang='uk')
             all_words = list(map(lambda x: morph.parse(x)
                                  [0].normal_form, all_words))
-            all_words = list(
-                filter(lambda x: x not in self.STOPWORDS, all_words))
+            # all_words = list(
+            #     filter(lambda x: x not in self.STOPWORDS, all_words))
             for i in range(len(all_words)):
                 if all_words[i] == 'не':
                     if all_words[i+1] in self.EMOTIONAL_WORDS:

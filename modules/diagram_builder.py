@@ -11,7 +11,7 @@ def generate_diagram(emotions: dict):
     :param emotions: dict with emotions and their values.
     """
     try:
-        os.makedirs(os.path.realpath('../diagrams'))
+        os.makedirs(os.path.realpath('../modules/static'))
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
@@ -30,7 +30,7 @@ def generate_diagram(emotions: dict):
                                 normalize=True)
     plt.legend(patches, labels, loc="best")
     plt.axis('equal')
-    plt.savefig(os.path.realpath('../diagrams/diagram.jpg'))
+    plt.savefig(os.path.realpath('../modules/static/diagram.jpg'))
 
 
 def generate_wordcloud(words):
@@ -39,7 +39,7 @@ def generate_wordcloud(words):
     :param words: list of words to be displayed in the word cloud.
     """
     try:
-        os.makedirs(os.path.realpath('../diagrams'))
+        os.makedirs(os.path.realpath('../modules/static'))
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
@@ -54,7 +54,7 @@ def generate_wordcloud(words):
     plt.figure(figsize=(5,6))
     plt.imshow(cloud)
     plt.axis('off')
-    plt.savefig(os.path.realpath('../diagrams/wordcloud.jpg'))
+    plt.savefig(os.path.realpath('../modules/static/wordcloud.jpg'))
 
 
 def create_diagrams(path):
