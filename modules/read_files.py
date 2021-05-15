@@ -1,4 +1,4 @@
-def read_input(path: str) -> str:
+def read_input(path='text.txt') -> str:
     with open(path) as file:
         text = file.read()
     return text
@@ -18,4 +18,4 @@ def read_emotions(path: str):
         line = line.split('\t')
         result[line[0]] = (float(line[1]), line[2])
     return result
-# print(read_emotions('positive.txt'))
+

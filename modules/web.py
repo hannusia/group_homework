@@ -9,8 +9,9 @@ def index():
 @app.route('/results', methods=['POST'])
 def results():
     text = request.form['input_text']
+    with open('text.txt', 'w') as file:
+        file.write(text)
     return render_template('results.html', post=text)
-    # return text
 
 if __name__ == '__main__':
     app.run()

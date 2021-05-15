@@ -14,3 +14,4 @@ nltk_test.py
 stopwords.txt
 negative.txt
 positive.txt
+text.txt

@@ -1,6 +1,7 @@
-from divide import *
+from modules.divide import *
+from modules.read_files import read_input
 divider = Divider()
-text = ""
+text = read_input()
 sentences = divider.div_into_sentences(text)
 
 emotion = sentences.emotion
