@@ -16,6 +16,6 @@ def read_emotions(path: str):
         lines = file.read().splitlines()
     for line in lines:
         line = line.split('\t')
-        result[line[0]] = (float(line[1]), line[2])
+        result[line[0]] = (float(line[1]), line[-1])
     return result
 
