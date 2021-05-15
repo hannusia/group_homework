@@ -1,5 +1,5 @@
 
-import os
+import os , errno
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from analyze import analyze
@@ -7,9 +7,15 @@ from analyze import analyze
 
 def generate_diagram(emotions: dict):
     """
-    Builds a diagram and saves it in directory /photos/ as diagram.jpg
+    Builds a diagram and saves it in directory /diagrams/ as diagram.jpg
     :param emotions: dict with emotions and their values.
     """
+    try:
+        os.makedirs(os.path.realpath('../diagrams'))
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
+
     entries_to_remove = []
     for i in emotions.keys():
         if emotions[i] == 0.0:
@@ -24,14 +30,20 @@ def generate_diagram(emotions: dict):
                                 normalize=True)
     plt.legend(patches, labels, loc="best")
     plt.axis('equal')
-    plt.savefig(os.path.realpath('../photos/diagram.jpg'))
+    plt.savefig(os.path.realpath('../diagrams/diagram.jpg'))
 
 
 def generate_wordcloud(words):
     """
-    Builds a word cloud diagram and saves it in directory /photos/ as wordcloud.jpg.
+    Builds a word cloud diagram and saves it in directory /diagrams/ as wordcloud.jpg.
     :param words: list of words to be displayed in the word cloud.
     """
+    try:
+        os.makedirs(os.path.realpath('../diagrams'))
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
+
     text = ' '.join(words)
     cloud = WordCloud(width=400,
                       height=330,
@@ -42,13 +54,13 @@ def generate_wordcloud(words):
     plt.figure(figsize=(5,6))
     plt.imshow(cloud)
     plt.axis('off')
-    plt.savefig(os.path.realpath('../photos/wordcloud.jpg'))
+    plt.savefig(os.path.realpath('../diagrams/wordcloud.jpg'))
 
 
 def create_diagrams(path):
     """
     Builds a diagram and wordcloud and saves it in
-    directory /photos/ as diagram.jpg and wordcloud.jpg.
+    directory /diagrams/ as diagram.jpg and wordcloud.jpg.
     """
     results = analyze(path)
     words = results[2]
