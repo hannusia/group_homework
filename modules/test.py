@@ -1,5 +1,6 @@
 import unittest
 from divide import *
+from analyze import analyze
 
 
 class TestValidator(unittest.TestCase):
@@ -19,6 +20,10 @@ class TestValidator(unittest.TestCase):
         self.assertFalse(sent.sad_words)
         sent = Sentence('hello darkness my old friend', 'en')
         self.assertEqual(sent.emotion, 0.2439)
+
+    def test_analyze(self):
+        sent = Sentence('Він щасливий', 'ua')
+        self.assertTrue('щасливий' in sent.happy_words)
 
 
 if __name__ == '__main__':
