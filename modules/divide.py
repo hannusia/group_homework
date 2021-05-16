@@ -1,5 +1,7 @@
 from read_files import *
 emotional_words = read_emotions('positive.tsv')
+sad_words = read_emotions('negative.tsv')
+emotional_words.update(sad_words)
 stopwords = read_stopwords('stopwords.txt')
 
 
