@@ -38,11 +38,22 @@ contains modules for program testing
 * [Homework №2 results](https://github.com/hannusia/group_homework/wiki/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D1%94-%D0%B7%D0%B0%D0%B2%D0%B4%D0%B0%D0%BD%D0%BD%D1%8F-%E2%84%962)
 * [Homework №3 results](https://github.com/hannusia/group_homework/wiki/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D1%94-%D0%B7%D0%B0%D0%B2%D0%B4%D0%B0%D0%BD%D0%BD%D1%8F-%E2%84%963)
 
-## Installation: 
+## Installation:
+```bash
+$ git https://github.com/hannusia/group_homework.git
+$ cd group_homework
+$ pip install -r requirements.txt
+```
 
-## Usage: 
+## Usage:
+you can follow indtructions from instalation and run Flask app at [modules/web.py](https://github.com/hannusia/group_homework/blob/main/modules/web.py)
+or open the [website](https://task-16.herokuapp.com/)
+after this you have to enter some text in english or in ukrainian(or link to a twitter post) and press submit-button then you will see sentimental analysis of your text
 
-## Contributing: 
+
+
+## Contributing:
+If you want to contribute in one way or another, open an issue or clone and install the project using the abovementioned installation instructions, opening up the pull request once you are finished
 
 ## Credits: 
 Hanna Yershova, Yana Holoborodko, Oleksandra Tkachenko, Maksym Tsapiv, Mykhailo Kuzmyn,
