@@ -1,9 +1,9 @@
 from flask import Flask, request, render_template
-from matplotlib import image
-from analyze import analyze
 from diagram_builder import create_diagrams
 import os
 import shutil
+from group_homework.modules.url_check import url_check
+from twitter_api import TwitterAPIParser
 
 
 app = Flask(__name__)
@@ -16,6 +16,9 @@ def index():
 def results():
     
     text = request.form['input_text']
+    if url_check(text):
+        t = TwitterAPIParser(text)
+        text = t.get_text()
     with open('text.txt', 'w') as file:
         file.write(text)
     img_1, img_2, suitable_age = create_diagrams('text.txt')
