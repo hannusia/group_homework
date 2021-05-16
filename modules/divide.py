@@ -184,10 +184,11 @@ class Sentence:
                 filter(lambda x: x not in self.STOPWORDS, all_words))
             for i in range(len(all_words)):
                 if all_words[i] == 'не':
-                    if all_words[i+1] in self.EMOTIONAL_WORDS:
-                        tpl = self.EMOTIONAL_WORDS[all_words[i+1]]
-                        words.append(
-                            Word(all_words[i+1], tpl[0], tpl[1]).reverse())
+                    if i < len(all_words) - 1:
+                        if all_words[i+1] in self.EMOTIONAL_WORDS:
+                            tpl = self.EMOTIONAL_WORDS[all_words[i+1]]
+                            words.append(
+                                Word(all_words[i+1], tpl[0], tpl[1]).reverse())
                 else:
                     if all_words[i] in self.EMOTIONAL_WORDS:
                         tpl = self.EMOTIONAL_WORDS[all_words[i]]
