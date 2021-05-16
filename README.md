@@ -11,12 +11,6 @@ This project aims to build a web-application that can:
 ### screens:
 contains screnshoots from Wiki-pages examples
 
-### docs:
-contains project documentation
-
-### examples:
-contains examples of results of every stage of homework
-
 ### modules:
 contains all program modules
 * <i>adt.py, twitter_api.py</i> - module to extract text from tweet
@@ -56,8 +50,12 @@ or open the [website](https://task-16.herokuapp.com/)
 If you want to contribute in one way or another, open an issue or clone and install the project using the abovementioned installation instructions, opening up the pull request once you are finished
 
 ## Credits: 
-Hanna Yershova, Yana Holoborodko, Oleksandra Tkachenko, Maksym Tsapiv, Mykhailo Kuzmyn,
-UCU, 2021
+* [Hanna Yershova](https://github.com/hannusia)
+* [Yana Holoborodko](https://github.com/hooloobooroodkoo)
+* [Oleksandra Tkachenko](https://github.com/oleksandratkachenko)
+* [Maksym Tsapiv](https://github.com/MaksymTsapiv)
+* [Mykhailo Kuzmyn](https://github.com/Michael-Data-Science-spec)
+* UCU, 2021
 
 ## License:
 MIT License
