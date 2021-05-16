@@ -18,4 +18,3 @@ def read_emotions(path: str):
         line = line.split('\t')
         result[line[0]] = (float(line[1]), line[-1])
     return result
-

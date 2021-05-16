@@ -3,6 +3,7 @@ emotional_words = read_emotions('positive.tsv')
 sad_words = read_emotions('negative.tsv')
 emotional_words.update(sad_words)
 stopwords = read_stopwords('stopwords.txt')
+cusswords_en = read_stopwords('cusswords.txt')
 
 
 class Divider:
@@ -148,6 +149,8 @@ class Sentence:
 
     def __init__(self, text: str, lang: str):
         self.lang = lang
+        if lang == 'en':
+            self.FORBIDDEN_WORDS = cusswords_en
         self.text = text.lower()
         self.sentiment = self.find_sentiment(text)
         self.words = self.clean_words()
@@ -223,8 +226,8 @@ class Sentence:
         return result
 
     def is_aceptable(self):
-        for word in self.words:
-            if word in self.FORBIDDEN_WORDS:
+        for word in self.FORBIDDEN_WORDS:
+            if word in self.text:
                 return False
         return True
 

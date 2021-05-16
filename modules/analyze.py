@@ -16,4 +16,3 @@ def analyze(path: str):
     all_words.update(set(agressive_words.keys()))
     all_words.update(set(fear_words.keys()))
     return emotion, acceptancy, all_words, {'happy': len(happy_words), 'sad': len(sad_words), 'agressive': len(agressive_words), 'fear': len(fear_words)}
-print(analyze('text.txt'))
