@@ -46,9 +46,9 @@ $ pip install -r requirements.txt
 ```
 
 ## Usage:
-you can follow indtructions from instalation and run Flask app at [modules/web.py](https://github.com/hannusia/group_homework/blob/main/modules/web.py)
+1) You can follow instructions from instalation and run Flask app at [modules/web.py](https://github.com/hannusia/group_homework/blob/main/modules/web.py)
 or open the [website](https://task-16.herokuapp.com/)
-after this you have to enter some text in english or in ukrainian(or link to a twitter post) and press submit-button then you will see sentimental analysis of your text
+2) After this you have to enter some text in english or in ukrainian(or link to a twitter post) and press submit-button then you will see sentimental analysis of your text
 
 
 
