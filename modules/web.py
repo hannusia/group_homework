@@ -1,7 +1,10 @@
 from flask import Flask, request, render_template
+from matplotlib import image
 from analyze import analyze
 from diagram_builder import create_diagrams
 import os
+import shutil
+
 
 app = Flask(__name__)
 
@@ -11,11 +14,14 @@ def index():
 
 @app.route('/results', methods=['POST'])
 def results():
+    
     text = request.form['input_text']
     with open('text.txt', 'w') as file:
         file.write(text)
-    create_diagrams('text.txt')
-    return render_template('results.html', post=text)
+    img_1, img_2, suitable_age = create_diagrams('text.txt')
+    return render_template('results.html', post=text, result=suitable_age, image_1 = img_1, image_2 = img_2)
 
 if __name__ == '__main__':
+    if os.path.exists('static'):
+        shutil.rmtree('static')
     app.run()

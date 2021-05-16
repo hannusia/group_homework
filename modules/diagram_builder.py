@@ -3,7 +3,7 @@ import os , errno
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from analyze import analyze
-
+import random
 
 def generate_diagram(emotions: dict):
     """
@@ -30,7 +30,12 @@ def generate_diagram(emotions: dict):
                                 normalize=True)
     plt.legend(patches, labels, loc="best")
     plt.axis('equal')
-    plt.savefig(os.path.realpath('../modules/static/diagram.jpg'))
+    name = '../modules/static/diagram'
+    number = str(random.randint(0, 1000000))
+    path = name + number + ".jpg"
+    plt.savefig(os.path.realpath(path))
+    plt.switch_backend('agg')
+    return '/static/diagram' + number + ".jpg"
 
 
 def generate_wordcloud(words):
@@ -54,8 +59,12 @@ def generate_wordcloud(words):
     plt.figure(figsize=(5,6))
     plt.imshow(cloud)
     plt.axis('off')
-    plt.savefig(os.path.realpath('../modules/static/wordcloud.jpg'))
-
+    name = '../modules/static/wordcloud'
+    number = str(random.randint(0, 1000000))
+    path = name + number + ".jpg"
+    plt.savefig(os.path.realpath(path))
+    plt.switch_backend('agg')
+    return '/static/wordcloud' + number + ".jpg"
 
 def create_diagrams(path):
     """
@@ -65,5 +74,9 @@ def create_diagrams(path):
     results = analyze(path)
     words = results[2]
     emotions = results[3]
-    generate_diagram(emotions)
-    generate_wordcloud(words)
+    path_1 = generate_diagram(emotions)
+    path_2 = generate_wordcloud(words)
+    if results[1]:
+        msg = "Не містить неприйнятного контенту"
+    else: msg = "Нерекомедований дітям"
+    return path_1, path_2, msg
