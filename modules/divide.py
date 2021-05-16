@@ -4,6 +4,7 @@ sad_words = read_emotions('negative.tsv')
 emotional_words.update(sad_words)
 stopwords = read_stopwords('stopwords.txt')
 cusswords_en = read_stopwords('cusswords.txt')
+cusswords_ua = read_stopwords('мати.txt')
 
 
 class Divider:
@@ -151,6 +152,8 @@ class Sentence:
         self.lang = lang
         if lang == 'en':
             self.FORBIDDEN_WORDS = cusswords_en
+        else:
+            self.FORBIDDEN_WORDS = cusswords_ua
         self.text = text.lower()
         self.sentiment = self.find_sentiment(text)
         self.words = self.clean_words()
