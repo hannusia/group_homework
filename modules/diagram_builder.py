@@ -50,6 +50,8 @@ def generate_wordcloud(words):
             raise
 
     text = ' '.join(words)
+    if len(text) == 0:
+        text = 'nothing particular'
     cloud = WordCloud(width=400,
                       height=330,
                       max_words=150,

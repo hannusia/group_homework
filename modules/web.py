@@ -2,7 +2,6 @@ from flask import Flask, request, render_template
 from diagram_builder import create_diagrams
 import os
 import shutil
-# from group_homework.modules.url_check import url_check
 from url_check import url_check
 from twitter_api import TwitterAPIParser
 
