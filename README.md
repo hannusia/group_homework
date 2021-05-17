@@ -8,20 +8,24 @@ This project aims to build a web-application that can:
 
 ## Table of Contents:
 
-### screens:
-contains screnshoots from Wiki-pages examples
+### docs:
+contains all project documentation
 
 ### modules:
 contains all program modules
 * <i>adt.py, twitter_api.py</i> - module to extract text from tweet
 * <i>analyze.py</i> - module that analyzes text and returns final data to build diagram and worldcloud
-* <i>cusswords.txt, мати.txt</i> - contains dirty words and cusswords for english and ukrainian
+* <i>cusswords.txt, not_for_children.txt</i> - contains dirty words and cusswords for english and ukrainian
 * <i>diagram_builder.py</i> - module that uses data from <i>analyze.py</i> and returns image of diagram and worldcloud
 * <i>divide.py</i> - module with ADT and other classes to process text and perform sentimental analysis
 * <i>url_check.py</i> - check if input on website is a raw text or a link
 * <i>read_file.py</i> - contains all functions to read information from different files(txt and tsv)
 * <i>web.py</i> - module that creates website
 * <i>templates</i> - folder with html-files that are used in web
+* <i>positive.tsv, negative.tsv</i> - datasets with ukrainian words and their sentiments, datasets are mainly from https://github.com/lang-uk/tone-dict-uk
+
+### screens:
+contains images for Wiki-pages and readme.md
 
 ### tests:
 contains modules for program testing
@@ -47,7 +51,7 @@ or open the [website](https://task-16.herokuapp.com/)
 
 
 ## Contributing:
-If you want to contribute in one way or another, open an issue or clone and install the project using the abovementioned installation instructions, opening up the pull request once you are finished
+If you want to contribute in one way or another, open an issue or clone and install the project using the abovementioned installation instructions, opening up the pull request once you are finished. Also you can contact through github or another social media.
 
 ## Credits: 
 * [Hanna Yershova](https://github.com/hannusia)
