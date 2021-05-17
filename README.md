@@ -75,7 +75,8 @@ If you want to contribute in one way or another, open an issue or clone and inst
 * [Oleksandra Tkachenko](https://github.com/oleksandratkachenko)
 * [Maksym Tsapiv](https://github.com/MaksymTsapiv)
 * [Mykhailo Kuzmyn](https://github.com/Michael-Data-Science-spec)
-* UCU, 2021
+
+UCU, 2021
 
 ## License:
 MIT License
