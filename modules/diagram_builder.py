@@ -74,11 +74,11 @@ def create_diagrams(path):
     directory /diagrams/ as diagram.jpg and wordcloud.jpg.
     """
     results = analyze(path)
-    words = results[2]
-    emotions = results[3]
+    words = results[1]
+    emotions = results[2]
     path_1 = generate_diagram(emotions)
     path_2 = generate_wordcloud(words)
-    if results[1]:
+    if results[0]:
         msg = "Не містить неприйнятного контенту"
     else: msg = "Нерекомедований дітям"
     return path_1, path_2, msg
