@@ -5,6 +5,20 @@ This project aims to build a web-application that can:
 * do sentimental analysis for English and Ukrainian texts
 * determine if text is acceptable for immature audiences
 * work with instagram, twitter and facebook posts
+also you can learn about our project more by watching this [video](https://youtu.be/8J99NvgGkoc)
+
+## Example of working website:
+<p align="center">
+  <img src="https://github.com/hannusia/group_homework/blob/main/screens/site1.png" width="956"/>
+</p>
+<p align="center">
+  <img src="https://github.com/hannusia/group_homework/blob/main/screens/site2.png" width="956"/>
+</p>
+<p align="center">
+  <img src="https://github.com/hannusia/group_homework/blob/main/screens/site3.png" width="956"/>
+</p>
+
+
 
 ## Table of Contents:
 
