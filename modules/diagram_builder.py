@@ -76,9 +76,25 @@ def create_diagrams(path):
     results = analyze(path)
     words = results[1]
     emotions = results[2]
+    h = emotions['happy']
+    s = emotions['sad']
+    f = emotions['fear']
+    a = emotions['agressive']
+    # if emotions['sad'] != 0:
+    #     sad_per = emotions['sad'] / (emotions['happy'] + emotions['sad'] +emotions['agressive'] + emotions['fear'])
+    # else:
+    #     sad_per = 0
+    # if emotions['fear'] != 0:
+    #     fear_per = emotions['fear'] / (emotions['happy'] + emotions['sad'] +emotions['agressive'] + emotions['fear'])
+    # else:
+    #     fear_per = 0
+    # if emotions['agressive'] != 0:
+    #     agressive_per = emotions['agressive'] / (emotions['happy'] + emotions['sad'] +emotions['agressive'] + emotions['fear'])
+    # else:
+    #     agressive_per = 0
     path_1 = generate_diagram(emotions)
     path_2 = generate_wordcloud(words)
-    if results[0]:
+    if (results[0]) and (s < 0.3 * (h+s+f+a)) and (f < 0.3 * (h+s+f+a)) and (a < 0.3 * (h+s+f+a)):
         msg = "Не містить неприйнятного контенту"
     else: msg = "Нерекомедований дітям"
     return path_1, path_2, msg
