@@ -68,10 +68,11 @@ class TextADT:
         self.lang = lang
         self.emotion = 0
         self.acceptancy = True
-        self.happy_words = {}
-        self.sad_words = {}
-        self.agressive_words = {}
-        self.fear_words = {}
+        self.emotional_words = set()
+        self.happy_coef = 0
+        self.sad_coef = 0
+        self.agressive_coef = 0
+        self.fear_coef = 0
 
     def empty(self) -> bool:
         """
@@ -128,20 +129,35 @@ class TextADT:
                     return False
         return True
 
-    def make_dict(self):
+    # def make_dict(self):
+    #     curr = self.head
+    #     self.happy_words = curr.data.happy_words
+    #     self.sad_words = curr.data.sad_words
+    #     self.agressive_words = curr.data.agressive_words
+    #     self.fear_words = curr.data.fear_words
+    #     curr = curr.next
+    #     while curr is not None:
+    #         self.happy_words.update(curr.data.happy_words)
+    #         self.sad_words.update(curr.data.sad_words)
+    #         self.agressive_words.update(curr.data.agressive_words)
+    #         self.fear_words.update(curr.data.fear_words)
+    #         curr = curr.next
+    def make_summary(self):
         curr = self.head
-        self.happy_words = curr.data.happy_words
-        self.sad_words = curr.data.sad_words
-        self.agressive_words = curr.data.agressive_words
-        self.fear_words = curr.data.fear_words
-        curr = curr.next
-        while curr is not None:
-            self.happy_words.update(curr.data.happy_words)
-            self.sad_words.update(curr.data.sad_words)
-            self.agressive_words.update(curr.data.agressive_words)
-            self.fear_words.update(curr.data.fear_words)
+        if curr:
+            self.emotional_words = curr.data.emotional_words
+            self.happy_coef = curr.data.happy_coef
+            self.sad_coef = curr.data.sad_coef
+            self.agressive_coef = curr.data.agressive_coef
+            self.fear_coef = curr.data.fear_coef
             curr = curr.next
-
+            while curr is not None:
+                self.emotional_words.update(curr.data.emotional_words)
+                self.happy_coef += curr.data.happy_coef
+                self.sad_coef += curr.data.sad_coef
+                self.fear_coef += curr.data.fear_coef
+                self.agressive_coef += curr.data.agressive_coef
+                curr = curr.next
 
 class Sentence:
     STOPWORDS = stopwords
@@ -159,11 +175,12 @@ class Sentence:
         self.words = self.clean_words()
         self.acceptancy = self.is_aceptable()
         self.emotion = self.count_emotion() * self.sentiment
-        self.happy_words = {}
-        self.sad_words = {}
-        self.agressive_words = {}
-        self.fear_words = {}
-        self.make_dict()
+        self.emotional_words = set()
+        self.happy_coef = 0
+        self.sad_coef = 0
+        self.agressive_coef = 0
+        self.fear_coef = 0
+        self.make_summary()
 
     def find_sentiment(self, text):
         if text[-1] == '!':
@@ -244,30 +261,48 @@ class Sentence:
             return result/counter
         return 0
 
-    def make_dict(self):
+    # def make_dict(self):
+    #     for word in self.words:
+    #         emotion = word.emotion
+    #         name = word.name
+    #         if emotion == 'h':
+    #             if name in self.happy_words:
+    #                 self.happy_words[name] += 1
+    #             else:
+    #                 self.happy_words[name] = 1
+    #         elif emotion == 's':
+    #             if name in self.sad_words:
+    #                 self.sad_words[name] += 1
+    #             else:
+    #                 self.sad_words[name] = 1
+    #         elif emotion == 'a':
+    #             if name in self.agressive_words:
+    #                 self.agressive_words[name] += 1
+    #             else:
+    #                 self.agressive_words[name] = 1
+    #         elif emotion == 'f':
+    #             if name in self.fear_words:
+    #                 self.fear_words[name] += 1
+    #             else:
+    #                 self.fear_words[name] = 1
+    def make_summary(self):
         for word in self.words:
             emotion = word.emotion
             name = word.name
+            value = word.value
             if emotion == 'h':
-                if name in self.happy_words:
-                    self.happy_words[name] += 1
-                else:
-                    self.happy_words[name] = 1
+                self.emotional_words.add(name)
+                self.happy_coef += abs(value)
             elif emotion == 's':
-                if name in self.sad_words:
-                    self.sad_words[name] += 1
-                else:
-                    self.sad_words[name] = 1
-            elif emotion == 'a':
-                if name in self.agressive_words:
-                    self.agressive_words[name] += 1
-                else:
-                    self.agressive_words[name] = 1
+                self.emotional_words.add(name)
+                self.sad_coef += abs(value)
             elif emotion == 'f':
-                if name in self.fear_words:
-                    self.fear_words[name] += 1
-                else:
-                    self.fear_words[name] = 1
+                self.emotional_words.add(name)
+                self.fear_coef += abs(value)
+            elif emotion == 'a':
+                self.emotional_words.add(name)
+                self.agressive_coef += abs(value)
+
 
 
 class Word:
