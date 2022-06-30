@@ -19,7 +19,7 @@ MarkupSafe==2.0.0
 matplotlib==3.4.2
 murmurhash==1.0.5
 nltk>=3.6.4
-numpy==1.20.2
+numpy>=1.22
 packaging==20.9
 pathy==0.4.0
 pillow>=8.3.2
